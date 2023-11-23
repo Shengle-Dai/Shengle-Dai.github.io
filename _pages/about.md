@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi! I'm an international students studying in Cornel University. I'm interested in machine learning and related fields. I'm also interested in backend development.
+Hi! I’m an international student studying at Cornel University. I’m interested in machine learning and related fields, and backend development.
 
 <!-- A data-driven personal website
 ======
