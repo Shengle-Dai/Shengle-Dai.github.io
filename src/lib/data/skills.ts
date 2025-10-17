@@ -35,67 +35,253 @@ const defineSkill = <S extends string>(
 };
 
 export const items = [
+	// Programming Languages
+	defineSkill({
+		slug: 'python',
+		color: 'blue',
+		description:
+			'Proficient in Python for backend development, machine learning, and automation. Used extensively in academic projects, teaching assistant work, and building Flask-based REST APIs.',
+		logo: Assets.Python,
+		name: 'Python',
+		category: 'pro-lang'
+	}),
+	defineSkill({
+		slug: 'java',
+		color: 'orange',
+		description:
+			'Strong foundation in Java for object-oriented programming and data structures. Applied in coursework and software engineering projects.',
+		logo: Assets.Java,
+		name: 'Java',
+		category: 'pro-lang'
+	}),
 	defineSkill({
 		slug: 'js',
 		color: 'yellow',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+			'Extensive experience with JavaScript for full-stack web development, including frontend interactions and Node.js backend services.',
 		logo: Assets.JavaScript,
-		name: 'Javascript',
+		name: 'JavaScript',
 		category: 'pro-lang'
 	}),
 	defineSkill({
 		slug: 'ts',
 		color: 'blue',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+			'Expert in TypeScript for type-safe development across React, Next.js, Express, and Svelte projects. Used in production applications at Apple and Cornell DTI.',
 		logo: Assets.TypeScript,
-		name: 'Typescript',
+		name: 'TypeScript',
 		category: 'pro-lang'
 	}),
 	defineSkill({
-		slug: 'css',
+		slug: 'golang',
+		color: 'cyan',
+		description:
+			'Designed high-performance backend systems with Golang, achieving <80ms latency for real-time WebSocket applications in EzModel.',
+		logo: Assets.Go,
+		name: 'Golang',
+		category: 'pro-lang'
+	}),
+	defineSkill({
+		slug: 'cpp',
 		color: 'blue',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
-		logo: Assets.CSS,
-		name: 'CSS',
-		category: 'markup-style'
+			'Solid understanding of C++ for systems programming, algorithm competitions (USACO Platinum), and performance-critical applications.',
+		logo: Assets.Cpp,
+		name: 'C++',
+		category: 'pro-lang'
 	}),
 	defineSkill({
-		slug: 'html',
+		slug: 'sql',
 		color: 'orange',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
-		logo: Assets.HTML,
-		name: 'HTML',
-		category: 'markup-style'
+			'Proficient in SQL for database design, queries, and optimization. Experience with PostgreSQL and SQLite in production environments.',
+		logo: Assets.PostgreSQL,
+		name: 'SQL',
+		category: 'pro-lang'
 	}),
 	defineSkill({
-		slug: 'sass',
-		color: 'pink',
+		slug: 'ocaml',
+		color: 'orange',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
-		logo: Assets.Sass,
-		name: 'Sass',
-		category: 'markup-style'
+			'Functional programming experience with OCaml, used for teaching assistant work and building automated testing suites.',
+		logo: Assets.Ocaml,
+		name: 'OCaml',
+		category: 'pro-lang'
+	}),
+	// Frameworks
+	defineSkill({
+		slug: 'nodejs',
+		color: 'green',
+		description:
+			'Backend development with Node.js for building scalable server-side applications and RESTful APIs.',
+		logo: Assets.NodeJs,
+		name: 'Node.js',
+		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'expressjs',
+		color: 'gray',
+		description:
+			'Built production-grade Express.js backends at Apple, handling authentication, authorization, and business logic for 80+ staff members.',
+		logo: Assets.ExpressJs,
+		name: 'Express.js',
+		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'flask',
+		color: 'black',
+		description:
+			'Award-winning Flask backend development for IthacaTraveller, featuring RESTful APIs, SQLAlchemy ORM, and real-time weather integration.',
+		logo: Assets.Flask,
+		name: 'Flask',
+		category: 'framework'
 	}),
 	defineSkill({
 		slug: 'reactjs',
 		color: 'cyan',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci enim, congue sit amet justo eget, consequat sollicitudin libero. Etiam iaculis lectus tempor, hendrerit enim in, luctus arcu. Maecenas id enim et nibh ullamcorper auctor ac eu est. Donec imperdiet, diam quis malesuada faucibus, nibh ex gravida sapien, posuere pharetra nunc libero tristique turpis. Sed egestas laoreet semper. In hac habitasse platea dictumst. Praesent vitae est nec felis maximus facilisis. Duis luctus dui id urna tristique varius. Ut vulputate leo arcu, non bibendum arcu pulvinar eget. Fusce semper elit ut congue lacinia. Suspendisse magna diam, tempus vitae interdum eget, dictum vitae nisl. Praesent quis fringilla tortor. Donec vitae sagittis dui.',
+			'Developed dynamic, responsive frontend applications with React. Experience includes state management, hooks, and component-based architecture.',
 		logo: Assets.ReactJs,
-		name: 'React Js',
-		category: 'library'
+		name: 'React',
+		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'nextjs',
+		color: 'black',
+		description:
+			'Built full-stack Next.js applications at Apple, featuring server-side rendering, API routes, and optimized performance for enterprise use.',
+		logo: Assets.Nextjs,
+		name: 'Next.js',
+		category: 'framework'
 	}),
 	defineSkill({
 		slug: 'svelte',
 		color: 'orange',
-		description: svelte,
+		description:
+			'Modern frontend development with Svelte for EzModel, leveraging reactive programming and minimal bundle sizes.',
 		logo: Assets.Svelte,
 		name: 'Svelte',
-		category: 'library'
+		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'tailwind',
+		color: 'cyan',
+		description:
+			'Utility-first CSS framework for rapid UI development with consistent, responsive design patterns.',
+		logo: Assets.Tailwind,
+		name: 'TailwindCSS',
+		category: 'framework'
+	}),
+	// Databases & Cloud
+	defineSkill({
+		slug: 'postgresql',
+		color: 'blue',
+		description:
+			'Production experience with PostgreSQL for relational database design, transactions, and performance optimization at Apple.',
+		logo: Assets.PostgreSQL,
+		name: 'PostgreSQL',
+		category: 'db'
+	}),
+	defineSkill({
+		slug: 'sqlite',
+		color: 'blue',
+		description:
+			'Embedded database development with SQLite for IthacaTraveller, using SQLAlchemy ORM for data modeling.',
+		logo: Assets.Sqlite,
+		name: 'SQLite',
+		category: 'db'
+	}),
+	defineSkill({
+		slug: 'firebase',
+		color: 'orange',
+		description:
+			'Implemented Firebase authentication flows and real-time database features for Cornell DTI projects.',
+		logo: Assets.Firebase,
+		name: 'Firebase',
+		category: 'db'
+	}),
+	defineSkill({
+		slug: 'supabase',
+		color: 'green',
+		description:
+			'Integrated Supabase OAuth and real-time features to reduce stale writes in collaborative applications.',
+		logo: Assets.Supabase,
+		name: 'Supabase',
+		category: 'db'
+	}),
+	defineSkill({
+		slug: 'docker',
+		color: 'blue',
+		description:
+			'Containerized applications with Docker for consistent deployment across development and production environments.',
+		logo: Assets.Docker,
+		name: 'Docker',
+		category: 'devops'
+	}),
+	defineSkill({
+		slug: 'aws',
+		color: 'orange',
+		description:
+			'Cloud infrastructure experience with AWS for scalable application deployment and management.',
+		logo: Assets.AWS,
+		name: 'AWS',
+		category: 'devops'
+	}),
+	// Tools & Practices
+	defineSkill({
+		slug: 'jwt',
+		color: 'purple',
+		description:
+			'Implemented JWT authentication and session management for secure API access control.',
+		logo: Assets.JWT,
+		name: 'JWT',
+		category: 'devtools'
+	}),
+	defineSkill({
+		slug: 'oauth',
+		color: 'blue',
+		description:
+			'Integrated OAuth 2.0 flows with Firebase, Supabase, and custom providers for secure third-party authentication.',
+		logo: Assets.OAuth,
+		name: 'OAuth',
+		category: 'devtools'
+	}),
+	defineSkill({
+		slug: 'websocket',
+		color: 'green',
+		description:
+			'Real-time bidirectional communication with WebSocket for collaborative editing features in EzModel.',
+		logo: Assets.WebSocket,
+		name: 'WebSocket',
+		category: 'devtools'
+	}),
+	defineSkill({
+		slug: 'jest',
+		color: 'red',
+		description:
+			'Unit and integration testing with Jest for JavaScript/TypeScript applications.',
+		logo: Assets.Jest,
+		name: 'Jest',
+		category: 'test'
+	}),
+	// Markup & Style
+	defineSkill({
+		slug: 'html',
+		color: 'orange',
+		description:
+			'Semantic HTML5 for accessible, SEO-friendly web applications.',
+		logo: Assets.HTML,
+		name: 'HTML',
+		category: 'markup-style'
+	}),
+	defineSkill({
+		slug: 'css',
+		color: 'blue',
+		description:
+			'Modern CSS3 including Flexbox, Grid, animations, and responsive design principles.',
+		logo: Assets.CSS,
+		name: 'CSS',
+		category: 'markup-style'
 	})
 ] as const;
 

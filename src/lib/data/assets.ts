@@ -70,7 +70,19 @@ const Assets = {
 	Jest: a('jest.png'),
 	Unocss: a('unocss.svg'),
 	Ruvy: a('ruvy.svg'),
-	Postcss: a('postcss.svg')
+	Postcss: a('postcss.svg'),
+	Nextjs: a('nextjs.png'),
+	Supabase: a('supabase.svg'),
+	Sqlite: a('sqlite.svg'),
+	Ocaml: a('ocaml.svg'),
+	JWT: a('jwt.svg'),
+	OAuth: a('oauth.svg'),
+	WebSocket: a('websocket.svg'),
+	Apple: a('apple.svg'),
+	Cornell: a('cornell.svg'),
+	CornellDTI: a('cornell-dti.svg'),
+	EzModel: a('ezmodel.svg'),
+	IthacaTraveller: a('ithaca-traveller.svg')
 };
 
 export default Assets;
