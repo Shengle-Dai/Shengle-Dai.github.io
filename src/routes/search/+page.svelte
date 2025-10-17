@@ -3,11 +3,11 @@
 	import { filterItemsByQuery, type ItemOrSkill } from '$lib/utils/helpers';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
-	import * as experiences from '@data/experience';
-	import * as projects from '@data/projects';
+	import * as timeline from '@data/timeline';
 	import * as skills from '@data/skills';
 
 	import type { Icon, Item, Skill } from '$lib/types';
+	import { isExperience } from '$lib/types';
 
 	import SearchPage from '$lib/components/SearchPage.svelte';
 	import Chip from '$lib/components/Chip/Chip.svelte';
@@ -34,16 +34,20 @@
 	$: {
 		result = [];
 
-		// filter
+		// filter timeline items (projects and experience)
 		result.push(
-			...filterItemsByQuery(projects.items, query).map<SearchResultItem>((data) => ({
-				data,
-				icon: 'i-carbon-cube',
-				name: data.name,
-				to: `projects/${data.slug}`
-			}))
+			...filterItemsByQuery(timeline.items, query).map<SearchResultItem>((data) => {
+				const isExp = isExperience(data);
+				return {
+					data,
+					icon: isExp ? 'i-carbon-development' : 'i-carbon-cube',
+					name: isExp ? `${data.name} @ ${data.company}` : data.name,
+					to: isExp ? `experience/${data.slug}` : `projects/${data.slug}`
+				};
+			})
 		);
 
+		// filter skills
 		result.push(
 			...filterItemsByQuery(
 				skills.items as unknown as Array<ItemOrSkill>,
@@ -53,15 +57,6 @@
 				icon: 'i-carbon-software-resource-cluster',
 				name: data.name,
 				to: `skills/${data.slug}`
-			}))
-		);
-
-		result.push(
-			...filterItemsByQuery(experiences.items, query).map<SearchResultItem>((data) => ({
-				data,
-				icon: 'i-carbon-development',
-				name: `${data.name} @ ${data.company}`,
-				to: `experience/${data.slug}`
 			}))
 		);
 	}

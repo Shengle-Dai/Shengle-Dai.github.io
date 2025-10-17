@@ -79,3 +79,11 @@ export interface Education<S extends string = string> extends Item<S> {
 	subjects: Array<string>;
 	degree: string;
 }
+
+export type TimelineItem<S extends string = string> = Project<S> | Experience<S>;
+
+export function isExperience<S extends string = string>(
+	item: TimelineItem<S>
+): item is Experience<S> {
+	return 'company' in item && 'location' in item && 'contract' in item;
+}

@@ -1,12 +1,13 @@
 <script lang="ts">
-	import ExperienceCard from '$lib/components/ExperienceCard/ExperienceCard.svelte';
+	import TimelineCard from '$lib/components/TimelineCard/TimelineCard.svelte';
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
 	import SearchPage from '$lib/components/SearchPage.svelte';
-	import { items, title } from '@data/experience';
-	import type { Experience } from '$lib/types';
+	import { items, title } from '@data/timeline';
+	import type { TimelineItem } from '$lib/types';
+	import { isExperience } from '$lib/types';
 	import { isBlank } from '@riadh-adrani/utils';
 
-	let result: Array<Experience> = [...items];
+	let result: Array<TimelineItem> = [...items];
 
 	const onSearch = (e: CustomEvent<{ search: string }>) => {
 		const query = e.detail.search;
@@ -16,12 +17,13 @@
 			return;
 		}
 
-		result = items.filter(
-			(it) =>
-				it.name.toLowerCase().includes(query) ||
-				it.company.toLowerCase().includes(query) ||
-				it.description.toLowerCase().includes(query)
-		);
+		result = items.filter((it) => {
+			const nameMatch = it.name.toLowerCase().includes(query);
+			const descMatch = it.description.toLowerCase().includes(query);
+			const companyMatch = isExperience(it) && it.company.toLowerCase().includes(query);
+
+			return nameMatch || descMatch || companyMatch;
+		});
 	};
 </script>
 
@@ -36,7 +38,7 @@
 			<div
 				class="w-[0.5px] hidden lg:flex top-0 bottom-0 py-50px bg-[var(--border)] absolute rounded"
 			/>
-			{#each result as job, index (job.slug)}
+			{#each result as item, index (item.slug)}
 				<div
 					class={`flex ${
 						index % 2 !== 0 ? 'flex-row' : 'flex-row-reverse'
@@ -47,7 +49,7 @@
 						<UIcon icon="i-carbon-condition-point" classes="" />
 					</div>
 					<div class="flex-1 col items-stretch">
-						<ExperienceCard experience={job} />
+						<TimelineCard {item} />
 					</div>
 				</div>
 			{/each}
