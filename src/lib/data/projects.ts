@@ -18,6 +18,7 @@ export const items: Array<Project> = [
 		},
 		skills: getSkills('golang', 'websocket', 'supabase', 'svelte', 'ts'),
 		type: 'Database Design Tool',
+		video: 'https://www.youtube.com/embed/_-AS5DtDeqs',
 		screenshots: [
 			{
 				label: 'Real-time Schema Editor',
@@ -37,7 +38,7 @@ export const items: Array<Project> = [
 		slug: 'ithaca-traveller',
 		color: '#FF6B35',
 		description:
-			'Engineered the backend system for an Ithaca travel guide app, winning the Best Backend Award (among 100+ students) at Cornell Engineering\'s first-year hackathon for robust design and reliability. Implemented a Flask backend with SQLAlchemy/SQLite data models and RESTful APIs. Integrated a real-time weather API to provide up-to-date information for travelers. Containerized the application with Docker and deployed on Google Cloud Platform, demonstrating proficiency in modern DevOps practices.',
+			"Engineered the backend system for an Ithaca travel guide app, winning the Best Backend Award (among 100+ students) at Cornell Engineering's first-year hackathon for robust design and reliability. Implemented a Flask backend with SQLAlchemy/SQLite data models and RESTful APIs. Integrated a real-time weather API to provide up-to-date information for travelers. Containerized the application with Docker and deployed on Google Cloud Platform, demonstrating proficiency in modern DevOps practices.",
 		shortDescription:
 			'Award-winning Ithaca travel guide backend with Flask, RESTful APIs, and real-time weather integration',
 		links: [{ to: 'https://github.com/Shengle-Dai/ithaca-traveller', label: 'GitHub' }],

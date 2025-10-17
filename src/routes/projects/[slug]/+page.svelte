@@ -88,6 +88,19 @@
 						</div>
 					{/if}
 				</div>
+				{#if data.project.video}
+					<div class="px-10px m-y-8">
+						<div class="video-container">
+							<iframe
+								src={data.project.video}
+								title="{data.project.name} Demo Video"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+							></iframe>
+						</div>
+					</div>
+				{/if}
 				<div class="w-100% m-t-8">
 					<CardDivider />
 				</div>
@@ -134,6 +147,24 @@
 
 		&:hover {
 			background-size: 120%;
+		}
+	}
+
+	.video-container {
+		position: relative;
+		width: 100%;
+		padding-bottom: 56.25%; /* 16:9 aspect ratio */
+		height: 0;
+		overflow: hidden;
+		border-radius: 10px;
+
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
 		}
 	}
 </style>
