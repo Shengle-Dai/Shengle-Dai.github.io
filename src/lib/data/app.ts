@@ -1,1 +1,1 @@
-export const titleSuffix = 'Shengle Dai | Software Engineer';
+export const titleSuffix = 'Shengle (Frank) Dai | Software Engineer';
