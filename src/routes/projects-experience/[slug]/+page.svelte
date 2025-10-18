@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { getAssetURL } from '$lib/data/assets';
-	import { title } from '@data/experience';
+	import { title } from '@data/timeline';
 	import { getTimeDiff } from '$lib/utils';
 
-	import type { Experience } from '$lib/types';
+	import type { TimelineItem } from '$lib/types';
+	import { isExperience } from '$lib/types';
 
 	import CardLogo from '$lib/components/Card/CardLogo.svelte';
 	import MainTitle from '$lib/components/MainTitle/MainTitle.svelte';
@@ -15,9 +16,9 @@
 	import UIcon from '$lib/components/Icon/UIcon.svelte';
 	import CardDivider from '$lib/components/Card/CardDivider.svelte';
 
-	export let data: { experience?: Experience };
+	export let data: { item?: TimelineItem };
 
-	$: computedTitle = data.experience ? `${data.experience.name} - ${title}` : title;
+	$: computedTitle = data.item ? `${data.item.name} - ${title}` : title;
 </script>
 
 <TabTitle title={computedTitle} />
