@@ -1,11 +1,11 @@
-import { items } from '@data/experience';
+import { items } from '@data/timeline';
 
 export function load({ params }: { params: Record<string, string> }) {
 	if (params.slug) {
-		const experience = items.find((item) => {
-			return item.slug === params.slug;
+		const item = items.find((timelineItem) => {
+			return timelineItem.slug === params.slug;
 		});
 
-		return { experience };
+		return { item };
 	}
 }
