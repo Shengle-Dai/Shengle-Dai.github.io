@@ -43,7 +43,7 @@
 					display: `${item.name} (${item.type})`,
 					name: item.name,
 					type: 'projects',
-					url: `/projects/${item.slug}`
+					url: `/projects-experience/${item.slug}`
 				});
 			}
 		});
@@ -55,7 +55,7 @@
 					display: `${item.name} @ ${item.company}`,
 					name: item.name,
 					type: 'experience',
-					url: `/experience/${item.slug}`
+					url: `/projects-experience/${item.slug}`
 				});
 			}
 		});

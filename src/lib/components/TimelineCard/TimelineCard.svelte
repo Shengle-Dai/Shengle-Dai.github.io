@@ -25,9 +25,7 @@
 	const period = `${from} - ${to}`;
 
 	// Determine the href based on item type
-	const href = isExperience(item)
-		? `${base}/experience/${item.slug}`
-		: `${base}/projects/${item.slug}`;
+	const href = `${base}/projects-experience/${item.slug}`;
 
 	// Build info chips based on item type
 	const info = isExperience(item)

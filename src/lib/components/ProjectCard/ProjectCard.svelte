@@ -26,7 +26,7 @@
 		: 'now';
 </script>
 
-<Card color={project.color} href={`${base}/projects/${project.slug}`}>
+<Card color={project.color} href={`${base}/projects-experience/${project.slug}`}>
 	<CardLogo alt={project.name} src={getAssetURL(project.logo)} size={40} radius={'0'} />
 	<div class="m-t-20px row justify-between items-center">
 		<CardTitle title={project.name} />
