@@ -80,9 +80,9 @@ const Assets = {
 	WebSocket: a('websocket.svg'),
 	Apple: a('apple.svg'),
 	Cornell: a('cornell.svg'),
-	CornellDTI: a('cornell-dti.svg'),
-	EzModel: a('ezmodel.svg'),
-	IthacaTraveller: a('ithaca-traveller.svg')
+	CornellDTI: a('cornell-dti.png'),
+	EzModel: a('ezmodel.png'),
+	IthacaTraveller: a('ithaca-traveller.png')
 };
 
 export default Assets;
