@@ -24,20 +24,17 @@
 
 	const period = `${from} - ${to}`;
 
-	// Determine the href based on item type
-	const href = `${base}/projects-experience/${item.slug}`;
-
 	// Build info chips based on item type
 	const info = isExperience(item)
 		? [
-				{ label: item.company, icon: 'i-carbon-building' },
-				{ label: item.location, icon: 'i-carbon-location' },
-				{ label: item.contract, icon: 'i-carbon-hourglass' }
+				{ label: item.company, icon: 'i-carbon-building' as const },
+				{ label: item.location, icon: 'i-carbon-location' as const },
+				{ label: item.contract, icon: 'i-carbon-hourglass' as const }
 			]
-		: [{ label: item.type, icon: 'i-carbon-assembly-cluster' }];
+		: [{ label: item.type, icon: 'i-carbon-assembly-cluster' as const }];
 </script>
 
-<Card margin="0px 0px 20px 0px" tiltDegree={2} {href} color={item.color}>
+<Card margin="0px 0px 20px 0px" tiltDegree={2} color={item.color}>
 	<div class="col md:flex-row items-start gap-5 md:gap-1">
 		<CardLogo
 			src={getAssetURL(item.logo)}
