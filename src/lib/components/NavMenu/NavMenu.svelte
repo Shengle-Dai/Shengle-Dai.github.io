@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { theme, toggleTheme } from '$lib/stores/theme';
 	import { items } from '@data/navbar';
 	import * as HOME from '@data/home';
 
@@ -47,24 +46,6 @@
 		<div
 			class="row h-full justify-center items-stretch m-l-auto md:m-l-0 w-auto md:w-150px gap-1 text-1.15em"
 		>
-			<div class="row hidden md:flex">
-				<a
-					href={`${base}/search`}
-					class="text-inherit col-center self-stretch px-2 hover:bg-[color:var(--main-hover)]"
-				>
-					<UIcon icon="i-carbon-search" />
-				</a>
-				<button
-					class="bg-transparent text-1em border-none cursor-pointer hover:bg-[color:var(--main-hover)] text-[var(--secondary-text)] px-2"
-					on:click={() => toggleTheme()}
-				>
-					{#if $theme}
-						<UIcon icon="i-carbon-moon" />
-					{:else}
-						<UIcon icon="i-carbon-sun" />
-					{/if}
-				</button>
-			</div>
 			<div class="col-center md:hidden h-full hover:bg-[var(--main-hover)] cursor-pointer">
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div
@@ -88,28 +69,6 @@
 					<span class="">{item.title}</span>
 				</a>
 			{/each}
-		</div>
-		<div class="col gap-2 m-t-7">
-			<a
-				href={`${base}/search`}
-				class="text-inherit decoration-none px-6 py-3 gap-2 row hover:bg-[color:var(--main-hover)]"
-				on:click={() => toggleExpanded(false)}
-			>
-				<UIcon icon="i-carbon-search" />
-				<span>Search</span>
-			</a>
-			<button
-				class="bg-transparent text-1em border-none cursor-pointer px-6 py-3 gap-2 row hover:bg-[color:var(--main-hover)] text-[var(--secondary-text)] px-2"
-				on:click={() => toggleTheme()}
-			>
-				{#if $theme}
-					<UIcon icon="i-carbon-moon" />
-					<span>Dark Theme</span>
-				{:else}
-					<UIcon icon="i-carbon-sun" />
-					<span>Light Theme</span>
-				{/if}
-			</button>
 		</div>
 	</div>
 </div>
