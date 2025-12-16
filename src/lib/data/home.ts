@@ -8,7 +8,7 @@ export const name = 'Shengle (Frank)';
 export const lastName = 'Dai';
 
 export const description =
-	"Hi! I'm a Computer Science student at Cornell who loves building software that teams can rely on. Whether it's backend systems, full-stack apps, or collaborative projects, I bring strong technical skills and a genuine enthusiasm for teamwork. I thrive in agile environments, enjoy mentoring others, and believe the best code comes from great communication. Always eager to learn, contribute meaningfully, and grow alongside talented engineers!";
+	"Hi! I'm a Computer Science student at Cornell who loves building software that teams can rely on. Whether it's <strong>backend systems</strong>, full-stack apps, or <strong>collaborative projects</strong>, I bring strong technical skills and a <strong>genuine enthusiasm for teamwork</strong>. I thrive in <strong>agile environments</strong>, enjoy mentoring others, and believe <strong>the best code comes from great communication</strong>. Always eager to learn, contribute meaningfully, and grow alongside talented engineers!";
 
 export const links: Array<{ platform: Platform; link: string }> = [
 	{ platform: Platform.GitHub, link: 'https://github.com/Shengle-Dai' },
