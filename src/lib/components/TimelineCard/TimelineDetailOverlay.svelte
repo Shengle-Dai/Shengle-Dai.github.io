@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
+	import { onMount, onDestroy } from 'svelte';
 	import type { TimelineItem } from '$lib/types';
 	import UIcon from '../Icon/UIcon.svelte';
 	import Chip from '../Chip/Chip.svelte';
@@ -11,6 +12,8 @@
 
 	let currentScreenshotIndex = 0;
 	let selectedScreenshot: { src: string; label: string } | undefined = undefined;
+	let autoScrollInterval: ReturnType<typeof setInterval> | undefined;
+	let slideDirection: 'left' | 'right' = 'right';
 
 	// Truncate description to reasonable length
 	const MAX_DESCRIPTION_LENGTH = 250;
@@ -21,16 +24,16 @@
 
 	function nextScreenshot() {
 		if (item.screenshots) {
+			slideDirection = 'right';
 			currentScreenshotIndex = (currentScreenshotIndex + 1) % item.screenshots.length;
 		}
 	}
 
 	function prevScreenshot() {
 		if (item.screenshots) {
+			slideDirection = 'left';
 			currentScreenshotIndex =
-				currentScreenshotIndex === 0
-					? item.screenshots.length - 1
-					: currentScreenshotIndex - 1;
+				currentScreenshotIndex === 0 ? item.screenshots.length - 1 : currentScreenshotIndex - 1;
 		}
 	}
 
@@ -39,6 +42,21 @@
 			selectedScreenshot = item.screenshots[currentScreenshotIndex];
 		}
 	}
+
+	// Auto-scroll screenshots every 2 seconds
+	onMount(() => {
+		if (item.screenshots && item.screenshots.length > 1) {
+			autoScrollInterval = setInterval(() => {
+				nextScreenshot();
+			}, 1500);
+		}
+	});
+
+	onDestroy(() => {
+		if (autoScrollInterval) {
+			clearInterval(autoScrollInterval);
+		}
+	});
 </script>
 
 <div
@@ -51,45 +69,17 @@
 	{#if item.screenshots && item.screenshots.length > 0}
 		<div class="screenshot-section mb-3">
 			<div class="relative aspect-video rounded-lg overflow-hidden bg-[var(--main-hover)]">
-				<!-- Click to enlarge -->
-				<button
-					class="w-full h-full cursor-pointer border-0 p-0 bg-transparent"
-					on:click={openFullscreen}
-				>
-					<img
-						src={item.screenshots[currentScreenshotIndex].src}
-						alt={item.screenshots[currentScreenshotIndex].label}
-						class="w-full h-full object-cover"
-					/>
-				</button>
-
-				<!-- Navigation arrows (only if multiple screenshots) -->
-				{#if item.screenshots.length > 1}
-					<button
-						class="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-[var(--main)] opacity-80 rounded-full hover:opacity-100 border-0 cursor-pointer"
-						on:click|stopPropagation={prevScreenshot}
-					>
-						<UIcon icon="i-carbon-chevron-left" />
-					</button>
-
-					<button
-						class="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[var(--main)] opacity-80 rounded-full hover:opacity-100 border-0 cursor-pointer"
-						on:click|stopPropagation={nextScreenshot}
-					>
-						<UIcon icon="i-carbon-chevron-right" />
-					</button>
-
-					<!-- Indicator dots -->
-					<div class="absolute bottom-2 left-1/2 -translate-x-1/2 row gap-1">
-						{#each item.screenshots as _, idx}
-							<div
-								class="w-2 h-2 rounded-full"
-								class:bg-[var(--accent)]={idx === currentScreenshotIndex}
-								class:bg-[var(--border)]={idx !== currentScreenshotIndex}
-							/>
-						{/each}
-					</div>
-				{/if}
+				<div class="w-full h-full">
+					{#key currentScreenshotIndex}
+						<img
+							src={item.screenshots[currentScreenshotIndex].src}
+							alt={item.screenshots[currentScreenshotIndex].label}
+							class="w-full h-full object-contain"
+							in:fly={{ x: slideDirection === 'right' ? 100 : -100, duration: 400 }}
+							out:fly={{ x: slideDirection === 'right' ? -100 : 100, duration: 400 }}
+						/>
+					{/key}
+				</div>
 			</div>
 
 			<p class="text-center text-[0.8em] text-[var(--tertiary-text)] mt-2">
@@ -98,17 +88,37 @@
 		</div>
 	{/if}
 
-	<!-- Video Embed -->
+	<!-- Video or GIF -->
 	{#if item.video}
 		<div class="aspect-video mb-3 rounded-lg overflow-hidden">
-			<iframe
-				src={item.video}
-				class="w-full h-full"
-				frameborder="0"
-				title="Project video"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen
-			/>
+			{#if item.video.startsWith('/')}
+				{#if item.video.endsWith('.gif')}
+					<!-- GIF file -->
+					<img src={item.video} alt="Project demo" class="w-full h-full object-contain" />
+				{:else}
+					<!-- Local video file (autoplay like a GIF) -->
+					<video
+						src={item.video}
+						class="w-full h-full object-contain"
+						autoplay
+						loop
+						muted
+						playsinline
+					>
+						Your browser does not support the video tag.
+					</video>
+				{/if}
+			{:else}
+				<!-- Embedded video (YouTube, Vimeo, etc.) -->
+				<iframe
+					src={item.video}
+					class="w-full h-full"
+					frameborder="0"
+					title="Project video"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				/>
+			{/if}
 		</div>
 	{/if}
 
@@ -126,7 +136,9 @@
 
 	<!-- Condensed Description -->
 	{#if condensedDescription}
-		<div class="overlay-description text-[0.85em] text-[var(--tertiary-text)] mb-3">
+		<div
+			class="overlay-description text-[0.85em] text-[var(--tertiary-text)] mb-3 whitespace-pre-line"
+		>
 			{condensedDescription}
 		</div>
 	{/if}
@@ -135,9 +147,7 @@
 	{#if item.skills.length > 0}
 		<div class="row flex-wrap gap-1">
 			{#each item.skills.slice(0, 5) as skill}
-				<div
-					class="text-[0.75em] px-2 py-1 bg-[var(--main-hover)] rounded text-[var(--text)]"
-				>
+				<div class="text-[0.75em] px-2 py-1 bg-[var(--main-hover)] rounded text-[var(--text)]">
 					{skill.name}
 				</div>
 			{/each}

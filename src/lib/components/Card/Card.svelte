@@ -67,10 +67,12 @@
 	{href}
 	bind:this={el}
 	on:mousemove={onHover}
-	class={`card text-inherit decoration-none inline-flex flex-col border-1px border-solid border-[var(--border)] rounded-15px duration relative ${classes.join(
+	class={`card text-inherit decoration-none flex flex-col w-full border-1px border-solid border-[var(--border)] rounded-15px duration relative ${classes.join(
 		' '
 	)}`}
 	style:bgColor={'red'}
+	style:width="100%"
+	style:min-width="0"
 >
 	<div class="card-bg-img flex-1 flex flex-col p-25px rounded-15px">
 		<slot />

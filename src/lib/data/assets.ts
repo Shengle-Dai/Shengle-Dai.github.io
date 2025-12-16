@@ -81,6 +81,7 @@ const Assets = {
 	Apple: a('apple.svg'),
 	Cornell: a('cornell.svg'),
 	CornellDTI: a('cornell-dti.png'),
+	Databricks: a('databricks.svg'),
 	EzModel: a('ezmodel.png'),
 	IthacaTraveller: a('ithaca-traveller.png')
 };
