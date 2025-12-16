@@ -167,7 +167,7 @@
 	.detail-overlay {
 		position: absolute;
 		width: 380px;
-		z-index: 20;
+		z-index: 5;
 		backdrop-filter: blur(10px);
 		max-height: 80vh;
 		overflow-y: auto;
